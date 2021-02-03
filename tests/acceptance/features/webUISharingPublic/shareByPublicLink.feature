@@ -871,3 +871,11 @@ Feature: Share by public link
       | lorem.txt           |
       | simple-empty-folder |
       | data.zip            |
+
+  Scenario: public accesses public share that is password protected
+    Given user "user1" has logged in using the webUI
+    When the user creates a new public link for resource "lorem.txt" using the webUI
+    And the user edits the public link named "Public link" of file "lorem.txt" changing following
+      | password | pass123 |
+    And the public tries to open the public link page of the last public link created by user "user1" with password "pass123"
+    Then file "lorem.txt" should be listed on the webUI
