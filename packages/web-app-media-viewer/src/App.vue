@@ -167,7 +167,13 @@ export default {
         a: 1
       }
 
-      return this.$_loader_getDavFilePath(this.activeMediaFile.path, query)
+      // The getDavFilePath method would prepend `remote.php/dav/public-files` to the path which is already
+      // in the downloadURL. By prepending the downloadURL with `../../../` the resulting path will be
+      // look like http://localhost:8080/remote.php/dav/public-files/token/file
+      return this.$_loader_getDavFilePath(
+        '../../../' + this.activeMediaFile.downloadURL.substr(1),
+        query
+      )
     },
     rawMediaUrl() {
       return this.$_loader_getDavFilePath(this.activeMediaFile.path)
@@ -263,7 +269,7 @@ export default {
       // workaround for now: Load file as blob for images, load as signed url (if supported) for everything else.
       let promise
       if (this.isActiveMediaFileTypeImage || !this.isUrlSigningEnabled) {
-        promise = this.mediaSource(url, 'url', null)
+        promise = this.mediaSource(decodeURIComponent(url), 'url', null)
       } else {
         promise = this.$client.signUrl(url, 86400) // Timeout of the signed URL = 24 hours
       }

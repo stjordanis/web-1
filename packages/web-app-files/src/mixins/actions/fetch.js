@@ -6,7 +6,12 @@ export default {
       return [
         {
           icon: 'remove_red_eye',
-          handler: file => this.$_fetch_trigger(file.path, 'application/pdf'),
+          handler: file =>
+            this.$_fetch_trigger(
+              file,
+              'application/pdf',
+              checkRoute(['public-files'], this.$route.name)
+            ),
           ariaLabel: () => {
             return this.$gettext('Open in browser')
           },
@@ -23,8 +28,14 @@ export default {
     }
   },
   methods: {
-    $_fetch_trigger(filePath, mimetype) {
-      const url = this.$client.helpers._webdavUrl + filePath
+    $_fetch_trigger(file, mimetype, isPublicFile) {
+      if (isPublicFile) {
+        const url = this.$client.helpers.instance + file.downloadURL.substring(1)
+        window.open(url, '_blank')
+        return
+      }
+
+      const url = this.$client.helpers._webdavUrl + file.path
       const headers = new Headers()
 
       headers.append('Authorization', 'Bearer ' + this.getToken)

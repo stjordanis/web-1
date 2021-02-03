@@ -96,8 +96,14 @@ export default {
         path = ['..', 'dav', 'files', this.$store.getters.user.id, filePath].join('/')
       }
 
-      const queryStr = !query ? '' : '?' + queryString.stringify(query)
-      return this.$client.files.getFileUrl(path) + queryStr
+      const queryStr = !query ? '' : queryString.stringify(query)
+      const fileUrl = this.$client.files.getFileUrl(path)
+      const url = new URL(decodeURIComponent(fileUrl))
+      if (url.search) {
+        return fileUrl + '&' + queryStr
+      } else {
+        return fileUrl + '?' + queryStr
+      }
     },
 
     $_loader_headers() {
