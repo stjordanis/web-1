@@ -192,5 +192,6 @@ export default {
       console.error(`(!) ${warning.message}`)
     }
   },
+  preserveSymlinks: true,
   plugins
 }
