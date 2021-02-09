@@ -10,7 +10,7 @@
     "owncloud-design-system": "2.1.2",
     "owncloud-sdk": "^1.0.0-740",
     "p-queue": "^6.1.1",
-    "tus-js-client": "^1.8.0",
+    "tus-js-client": "^2.2.0",
     "vue": "^2.6.10",
     "vue-clipboard2": "^0.3.1",
     "vue-drag-drop": "^1.1.4",
