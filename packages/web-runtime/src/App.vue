@@ -14,7 +14,7 @@
       <template v-else-if="!showHeader">
         <router-view name="fullscreen" />
       </template>
-      <div v-else key="core-content">
+      <div v-else key="core-content" class="uk-flex uk-flex-stretch">
         <transition :name="appNavigationAnimation">
           <oc-sidebar
             v-if="isSidebarVisible"
@@ -322,16 +322,9 @@ export default {
 }
 </script>
 <style>
-body {
-  padding-left: 300px;
-  padding-top: 60px;
-}
-
 #oc-topbar {
-  position: fixed;
-  left: 300px;
+  position: sticky;
   top: 0;
-  width: calc(100% - 300px);
   height: 60px;
   z-index: 2;
   background-color: white;
@@ -342,10 +335,9 @@ body {
 }
 
 .oc-app-navigation {
-  position: fixed;
-  left: 0;
+  position: sticky;
   top: 0;
-  z-index: 2;
+  z-index: 1;
 }
 
 .loading-overlay {
@@ -366,9 +358,5 @@ body {
 .loading-overlay .oc-spinner:after {
   border: 10px solid;
   border-bottom: 10px solid transparent;
-}
-
-.oc-table-sticky .oc-table-header-cell {
-  top: 60px !important;
 }
 </style>
