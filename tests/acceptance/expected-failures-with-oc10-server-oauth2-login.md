@@ -20,8 +20,3 @@ Other free text and markdown formatting can be used elsewhere in the document if
 ### [Media Viewer preview not visible for files with .ogg and .webm formats](https://github.com/owncloud/web/issues/4667)
 -   [webUIPreview/imageMediaViewer.feature:136](https://github.com/owncloud/web/blob/master/tests/acceptance/features/webUIPreview/imageMediaViewer.feature#L136)
 -   [webUIPreview/imageMediaViewer.feature:154](https://github.com/owncloud/web/blob/master/tests/acceptance/features/webUIPreview/imageMediaViewer.feature#L154)
-
-### [webUILogin/adminBlocksUser.feature:20 behaves differently on CI] (https://github.com/owncloud/web/issues/4743)
--   [webUILogin/adminBlocksUser.feature:20](https://github.com/owncloud/web/blob/master/tests/acceptance/features/webUILogin/adminBlocksUser.feature#L120)
-### [Browser session deleted user should not be valid for newly created user of same name](https://github.com/owncloud/ocis/issues/904)
--   [webUILogin/oauthLogin.feature:59](https://github.com/owncloud/web/blob/master/tests/acceptance/features/webUILogin/oauthLogin.feature#L59)
